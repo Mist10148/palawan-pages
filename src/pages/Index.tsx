@@ -8,7 +8,6 @@ import {
   Users, 
   GraduationCap,
   Globe,
-  Utensils,
   MessageSquare,
   Database,
   Code,
@@ -18,7 +17,16 @@ import {
   Layers,
   Server,
   Heart,
-  Sparkles
+  Sparkles,
+  Image,
+  Check,
+  Zap,
+  Target,
+  Shield,
+  Cpu,
+  Terminal,
+  GitBranch,
+  HardDrive
 } from "lucide-react";
 
 interface Slide {
@@ -30,6 +38,8 @@ interface Slide {
   accent?: "primary" | "secondary" | "accent";
   features?: string[];
   stats?: { label: string; value: string }[];
+  cardStyle?: "hero" | "split" | "centered" | "timeline" | "grid" | "minimal" | "tech" | "showcase";
+  hasScreenshot?: boolean;
 }
 
 const slides: Slide[] = [
@@ -40,6 +50,7 @@ const slides: Slide[] = [
     content: "A learning website all about Iloilo — discover the heart of Ilonggo heritage through interactive courses, cultural lessons, and community-driven learning.",
     icon: <BookOpen className="w-12 h-12" />,
     accent: "secondary",
+    cardStyle: "hero",
   },
   {
     id: 2,
@@ -48,6 +59,7 @@ const slides: Slide[] = [
     icon: <Heart className="w-12 h-12" />,
     accent: "primary",
     features: ["Interactive Lessons", "AI Learning Assistant", "Cultural Education"],
+    cardStyle: "split",
   },
   {
     id: 3,
@@ -56,6 +68,7 @@ const slides: Slide[] = [
     icon: <Layers className="w-12 h-12" />,
     accent: "accent",
     features: ["Course Enrollment", "Progress Tracking", "Interactive Learning"],
+    cardStyle: "centered",
   },
   {
     id: 4,
@@ -64,6 +77,7 @@ const slides: Slide[] = [
     icon: <Globe className="w-12 h-12" />,
     accent: "secondary",
     features: ["Iloilo Cuisine", "Tourist Spots", "Traditional Crafts", "Local Agriculture"],
+    cardStyle: "grid",
   },
   {
     id: 5,
@@ -73,6 +87,7 @@ const slides: Slide[] = [
     icon: <Code className="w-12 h-12" />,
     accent: "primary",
     features: ["React.js & Vite", "Secure Authentication", "AI Assistant", "Real-time Progress"],
+    cardStyle: "tech",
   },
   {
     id: 6,
@@ -86,6 +101,8 @@ const slides: Slide[] = [
       { label: "Learners", value: "2,000+" },
       { label: "Expert Instructors", value: "20+" },
     ],
+    cardStyle: "showcase",
+    hasScreenshot: true,
   },
   {
     id: 7,
@@ -95,6 +112,8 @@ const slides: Slide[] = [
     icon: <BookOpen className="w-12 h-12" />,
     accent: "primary",
     features: ["Tourism", "Cooking", "Language", "History"],
+    cardStyle: "showcase",
+    hasScreenshot: true,
   },
   {
     id: 8,
@@ -104,6 +123,8 @@ const slides: Slide[] = [
     icon: <GraduationCap className="w-12 h-12" />,
     accent: "secondary",
     features: ["Course Objectives", "Module Overview", "Easy Enrollment", "Money-back Guarantee"],
+    cardStyle: "showcase",
+    hasScreenshot: true,
   },
   {
     id: 9,
@@ -113,6 +134,8 @@ const slides: Slide[] = [
     icon: <Sparkles className="w-12 h-12" />,
     accent: "accent",
     features: ["Video Lessons", "Text Content", "Downloads", "Interactive Tools"],
+    cardStyle: "showcase",
+    hasScreenshot: true,
   },
   {
     id: 10,
@@ -122,6 +145,8 @@ const slides: Slide[] = [
     icon: <Heart className="w-12 h-12" />,
     accent: "primary",
     features: ["Rooted in Iloilo", "Community-driven", "Quality-first"],
+    cardStyle: "showcase",
+    hasScreenshot: true,
   },
   {
     id: 11,
@@ -131,6 +156,8 @@ const slides: Slide[] = [
     icon: <UserCircle className="w-12 h-12" />,
     accent: "secondary",
     features: ["Secure Sign In", "Easy Registration", "Personalized Experience"],
+    cardStyle: "showcase",
+    hasScreenshot: true,
   },
   {
     id: 12,
@@ -140,6 +167,8 @@ const slides: Slide[] = [
     icon: <MessageSquare className="w-12 h-12" />,
     accent: "accent",
     features: ["Answer Questions", "Provide Summaries", "Translate Content", "Cultural Context"],
+    cardStyle: "showcase",
+    hasScreenshot: true,
   },
   {
     id: 13,
@@ -149,6 +178,8 @@ const slides: Slide[] = [
     icon: <Settings className="w-12 h-12" />,
     accent: "primary",
     features: ["Personal Information", "Avatar Customization", "Dark Mode Toggle"],
+    cardStyle: "showcase",
+    hasScreenshot: true,
   },
   {
     id: 14,
@@ -158,6 +189,8 @@ const slides: Slide[] = [
     icon: <Users className="w-12 h-12" />,
     accent: "secondary",
     features: ["Progress Tracking", "Completion Badges", "Course Recommendations"],
+    cardStyle: "showcase",
+    hasScreenshot: true,
   },
   {
     id: 15,
@@ -167,6 +200,7 @@ const slides: Slide[] = [
     icon: <Database className="w-12 h-12" />,
     accent: "accent",
     features: ["Create Accounts", "Read Content", "Update Progress", "Delete Data"],
+    cardStyle: "timeline",
   },
   {
     id: 16,
@@ -176,6 +210,7 @@ const slides: Slide[] = [
     icon: <Code className="w-12 h-12" />,
     accent: "primary",
     features: ["React.js & Vite", "Tailwind CSS", "PHP & Python Flask", "MySQL Database"],
+    cardStyle: "tech",
   },
   {
     id: 17,
@@ -185,6 +220,7 @@ const slides: Slide[] = [
     icon: <Server className="w-12 h-12" />,
     accent: "secondary",
     features: ["VS Code", "phpMyAdmin", "XAMPP", "GitHub"],
+    cardStyle: "grid",
   },
   {
     id: 18,
@@ -194,6 +230,7 @@ const slides: Slide[] = [
     icon: <Database className="w-12 h-12" />,
     accent: "accent",
     features: ["User Management", "Course Storage", "Progress Tracking", "API Integration"],
+    cardStyle: "minimal",
   },
 ];
 
@@ -229,7 +266,6 @@ const Index = () => {
     goToSlide(prev, "left");
   }, [currentSlide, goToSlide]);
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "ArrowRight") nextSlide();
@@ -239,7 +275,6 @@ const Index = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [nextSlide, prevSlide]);
 
-  // Touch/swipe support
   useEffect(() => {
     let touchStartX = 0;
     let touchEndX = 0;
@@ -270,6 +305,385 @@ const Index = () => {
     primary: "from-primary to-primary-light",
     secondary: "from-secondary to-secondary-light",
     accent: "from-accent to-accent-light",
+  };
+
+  const accentBg = {
+    primary: "bg-primary/10",
+    secondary: "bg-secondary/10",
+    accent: "bg-accent/10",
+  };
+
+  const renderCardContent = () => {
+    const accent = slide.accent || "primary";
+
+    switch (slide.cardStyle) {
+      case "hero":
+        return (
+          <div className="relative min-h-[500px] flex flex-col items-center justify-center text-center p-8 md:p-12">
+            {/* Decorative elements */}
+            <div className="absolute top-8 left-8 w-24 h-24 rounded-full bg-gradient-to-br from-primary/20 to-transparent blur-2xl" />
+            <div className="absolute bottom-8 right-8 w-32 h-32 rounded-full bg-gradient-to-br from-secondary/20 to-transparent blur-2xl" />
+            <div className="absolute top-1/2 left-1/4 w-16 h-16 rounded-full bg-gradient-to-br from-accent/20 to-transparent blur-xl" />
+            
+            <div className={`w-24 h-24 md:w-32 md:h-32 rounded-3xl bg-gradient-to-br ${accentColors[accent]} flex items-center justify-center shadow-glow mb-8 relative z-10`}>
+              <BookOpen className="w-12 h-12 md:w-16 md:h-16 text-primary-foreground" />
+            </div>
+            
+            <h1 className="font-display text-5xl md:text-7xl font-bold text-foreground mb-4 relative z-10">
+              {slide.title}
+            </h1>
+            
+            <p className={`font-body text-xl md:text-2xl bg-gradient-to-r ${accentColors[accent]} bg-clip-text text-transparent font-semibold mb-6 relative z-10`}>
+              {slide.subtitle}
+            </p>
+            
+            <p className="font-body text-lg text-muted-foreground max-w-2xl leading-relaxed relative z-10">
+              {slide.content}
+            </p>
+            
+            <div className="flex gap-4 mt-8 relative z-10">
+              <div className="px-6 py-3 rounded-full bg-gradient-to-r from-primary to-primary-light text-primary-foreground font-body font-medium">
+                Start Learning
+              </div>
+              <div className="px-6 py-3 rounded-full border-2 border-border text-foreground font-body font-medium hover:bg-muted transition-colors">
+                Explore
+              </div>
+            </div>
+          </div>
+        );
+
+      case "split":
+        return (
+          <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
+            <div className="flex flex-col justify-center">
+              <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${accentColors[accent]} flex items-center justify-center shadow-glow mb-6`}>
+                {slide.icon}
+              </div>
+              <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
+                {slide.title}
+              </h1>
+              <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                {slide.content}
+              </p>
+            </div>
+            
+            <div className="flex flex-col gap-4">
+              {slide.features?.map((feature, idx) => (
+                <div
+                  key={idx}
+                  className={`p-6 rounded-2xl ${accentBg[accent]} border border-border/50 hover:border-primary/30 transition-all duration-300 group`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${accentColors[accent]} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                      <Check className="w-5 h-5 text-primary-foreground" />
+                    </div>
+                    <span className="font-body text-lg font-medium text-foreground">{feature}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
+      case "centered":
+        return (
+          <div className="flex flex-col items-center text-center p-8 md:p-12">
+            <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${accentColors[accent]} flex items-center justify-center shadow-glow mb-6`}>
+              {slide.icon}
+            </div>
+            
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-2">
+              {slide.title}
+            </h1>
+            
+            <p className="font-body text-lg text-muted-foreground max-w-2xl leading-relaxed mb-8">
+              {slide.content}
+            </p>
+            
+            <div className="relative w-full max-w-lg">
+              <div className={`absolute inset-0 bg-gradient-to-br ${accentColors[accent]} blur-3xl opacity-20 rounded-full`} />
+              <div className="relative grid grid-cols-3 gap-4">
+                {slide.features?.map((feature, idx) => (
+                  <div
+                    key={idx}
+                    className="p-4 rounded-xl bg-card border border-border text-center hover:shadow-medium transition-all duration-300"
+                  >
+                    <Zap className={`w-6 h-6 mx-auto mb-2 text-${accent === 'primary' ? 'primary' : accent === 'secondary' ? 'secondary' : 'accent'}`} />
+                    <span className="font-body text-sm font-medium text-foreground">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+
+      case "grid":
+        return (
+          <div className="p-8 md:p-12">
+            <div className="flex items-center gap-4 mb-8">
+              <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${accentColors[accent]} flex items-center justify-center shadow-glow`}>
+                {slide.icon}
+              </div>
+              <div>
+                <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                  {slide.title}
+                </h1>
+                {slide.subtitle && (
+                  <p className={`font-body text-lg bg-gradient-to-r ${accentColors[accent]} bg-clip-text text-transparent font-medium`}>
+                    {slide.subtitle}
+                  </p>
+                )}
+              </div>
+            </div>
+            
+            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+              {slide.content}
+            </p>
+            
+            <div className="grid grid-cols-2 gap-4">
+              {slide.features?.map((feature, idx) => (
+                <div
+                  key={idx}
+                  className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-muted to-muted/30 border border-border p-6 group hover:border-primary/30 transition-all duration-300"
+                >
+                  <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${accentColors[accent]} opacity-10 rounded-bl-full group-hover:opacity-20 transition-opacity`} />
+                  <Target className={`w-8 h-8 mb-3 text-${accent === 'primary' ? 'primary' : accent === 'secondary' ? 'secondary' : 'accent'}`} />
+                  <span className="font-body text-base font-semibold text-foreground">{feature}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+
+      case "tech":
+        return (
+          <div className="p-8 md:p-12">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8">
+              <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${accentColors[accent]} flex items-center justify-center shadow-glow relative`}>
+                {slide.icon}
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 rounded-lg bg-card border border-border flex items-center justify-center">
+                  <Terminal className="w-4 h-4 text-primary" />
+                </div>
+              </div>
+              <div>
+                <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                  {slide.title}
+                </h1>
+                {slide.subtitle && (
+                  <p className={`font-body text-lg bg-gradient-to-r ${accentColors[accent]} bg-clip-text text-transparent font-medium`}>
+                    {slide.subtitle}
+                  </p>
+                )}
+              </div>
+            </div>
+            
+            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+              {slide.content}
+            </p>
+            
+            {/* Code-style feature display */}
+            <div className="rounded-2xl bg-foreground/5 dark:bg-background/50 border border-border overflow-hidden">
+              <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b border-border">
+                <div className="w-3 h-3 rounded-full bg-accent" />
+                <div className="w-3 h-3 rounded-full bg-secondary" />
+                <div className="w-3 h-3 rounded-full bg-primary" />
+                <span className="ml-2 font-mono text-xs text-muted-foreground">tech-stack.config</span>
+              </div>
+              <div className="p-6 font-mono text-sm space-y-3">
+                {slide.features?.map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-3">
+                    <span className="text-primary">const</span>
+                    <span className="text-secondary">{feature.replace(/\s+/g, '_').toLowerCase()}</span>
+                    <span className="text-muted-foreground">=</span>
+                    <span className="text-accent">"{feature}"</span>
+                    <span className="text-muted-foreground">;</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+
+      case "timeline":
+        return (
+          <div className="p-8 md:p-12">
+            <div className="flex items-center gap-4 mb-8">
+              <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${accentColors[accent]} flex items-center justify-center shadow-glow`}>
+                {slide.icon}
+              </div>
+              <div>
+                <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                  {slide.title}
+                </h1>
+                {slide.subtitle && (
+                  <p className={`font-body text-lg bg-gradient-to-r ${accentColors[accent]} bg-clip-text text-transparent font-medium`}>
+                    {slide.subtitle}
+                  </p>
+                )}
+              </div>
+            </div>
+            
+            <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+              {slide.content}
+            </p>
+            
+            {/* Timeline-style CRUD display */}
+            <div className="relative">
+              <div className={`absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b ${accentColors[accent]}`} />
+              <div className="space-y-6">
+                {slide.features?.map((feature, idx) => (
+                  <div key={idx} className="relative flex items-center gap-4 pl-12">
+                    <div className={`absolute left-4 w-5 h-5 rounded-full bg-gradient-to-br ${accentColors[accent]} border-4 border-card shadow-soft`} />
+                    <div className="flex-1 p-4 rounded-xl bg-muted/50 border border-border hover:border-primary/30 transition-all">
+                      <span className="font-body font-semibold text-foreground">{feature}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+
+      case "showcase":
+        return (
+          <div className="p-8 md:p-12">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 mb-6">
+              <div className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-gradient-to-br ${accentColors[accent]} flex items-center justify-center shadow-glow`}>
+                {slide.icon}
+              </div>
+              <div className="flex-1">
+                <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-1">
+                  {slide.title}
+                </h1>
+                {slide.subtitle && (
+                  <p className={`font-body text-lg md:text-xl bg-gradient-to-r ${accentColors[accent]} bg-clip-text text-transparent font-medium`}>
+                    {slide.subtitle}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
+              {slide.content}
+            </p>
+
+            {/* Screenshot Placeholder */}
+            {slide.hasScreenshot && (
+              <div className="mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-muted to-muted/30 border-2 border-dashed border-border aspect-video flex items-center justify-center relative group hover:border-primary/40 transition-colors">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+                <div className="text-center z-10 p-6">
+                  <div className={`w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${accentColors[accent]} flex items-center justify-center opacity-40 group-hover:opacity-60 transition-opacity shadow-medium`}>
+                    <Image className="w-10 h-10 text-primary-foreground" />
+                  </div>
+                  <p className="text-base font-body font-medium text-muted-foreground">
+                    {slide.title} Screenshot
+                  </p>
+                  <p className="text-sm text-muted-foreground/60 mt-1">
+                    Replace with actual screenshot
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Stats */}
+            {slide.stats && (
+              <div className="grid grid-cols-3 gap-4 mb-6">
+                {slide.stats.map((stat, idx) => (
+                  <div
+                    key={idx}
+                    className={`text-center p-4 rounded-xl ${accentBg[accent]} border border-border/50`}
+                  >
+                    <p className={`font-display text-2xl md:text-3xl font-bold bg-gradient-to-r ${accentColors[accent]} bg-clip-text text-transparent`}>
+                      {stat.value}
+                    </p>
+                    <p className="font-body text-sm text-muted-foreground mt-1">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Features */}
+            {slide.features && (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {slide.features.map((feature, idx) => (
+                  <div
+                    key={idx}
+                    className="px-4 py-3 rounded-xl bg-muted/50 border border-border text-center hover:border-primary/30 hover:bg-muted transition-all duration-300"
+                  >
+                    <span className="font-body text-sm font-medium text-foreground">
+                      {feature}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+
+      case "minimal":
+        return (
+          <div className="p-8 md:p-12 min-h-[400px] flex flex-col justify-center">
+            <div className="max-w-2xl mx-auto text-center">
+              <div className={`w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br ${accentColors[accent]} flex items-center justify-center shadow-glow mb-6`}>
+                {slide.icon}
+              </div>
+              
+              <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
+                {slide.title}
+              </h1>
+              
+              {slide.subtitle && (
+                <p className={`font-body text-lg bg-gradient-to-r ${accentColors[accent]} bg-clip-text text-transparent font-medium mb-6`}>
+                  {slide.subtitle}
+                </p>
+              )}
+              
+              <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+                {slide.content}
+              </p>
+              
+              {slide.features && (
+                <div className="flex flex-wrap justify-center gap-3">
+                  {slide.features.map((feature, idx) => (
+                    <span
+                      key={idx}
+                      className={`px-4 py-2 rounded-full ${accentBg[accent]} border border-border/50 text-sm font-body font-medium text-foreground`}
+                    >
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+
+      default:
+        return (
+          <div className="p-8 md:p-12">
+            <div className="flex items-center gap-4 mb-6">
+              <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${accentColors[accent]} flex items-center justify-center shadow-glow`}>
+                {slide.icon}
+              </div>
+              <div>
+                <h1 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                  {slide.title}
+                </h1>
+                {slide.subtitle && (
+                  <p className={`font-body text-lg bg-gradient-to-r ${accentColors[accent]} bg-clip-text text-transparent font-medium`}>
+                    {slide.subtitle}
+                  </p>
+                )}
+              </div>
+            </div>
+            <p className="font-body text-lg text-muted-foreground leading-relaxed">
+              {slide.content}
+            </p>
+          </div>
+        );
+    }
   };
 
   return (
@@ -343,88 +757,9 @@ const Index = () => {
             `}
           >
             {/* Card Header Gradient */}
-            <div 
-              className={`h-2 bg-gradient-to-r ${accentColors[slide.accent || "primary"]}`}
-            />
-
-            <div className="p-6 md:p-10 lg:p-12">
-              {/* Icon & Title */}
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 mb-6">
-                <div 
-                  className={`
-                    w-16 h-16 md:w-20 md:h-20 rounded-2xl 
-                    bg-gradient-to-br ${accentColors[slide.accent || "primary"]}
-                    flex items-center justify-center shadow-glow
-                    text-primary-foreground
-                  `}
-                >
-                  {slide.icon}
-                </div>
-                <div className="flex-1">
-                  <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-1">
-                    {slide.title}
-                  </h1>
-                  {slide.subtitle && (
-                    <p className={`font-body text-lg md:text-xl bg-gradient-to-r ${accentColors[slide.accent || "primary"]} bg-clip-text text-transparent font-medium`}>
-                      {slide.subtitle}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              {/* Content */}
-              <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed mb-8">
-                {slide.content}
-              </p>
-
-              {/* Image Placeholder */}
-              <div className="mb-8 rounded-xl overflow-hidden bg-gradient-to-br from-muted to-muted/50 border border-border aspect-video flex items-center justify-center relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5" />
-                <div className="text-center z-10">
-                  <div className={`w-16 h-16 mx-auto mb-3 rounded-xl bg-gradient-to-br ${accentColors[slide.accent || "primary"]} flex items-center justify-center opacity-30 group-hover:opacity-50 transition-opacity`}>
-                    {slide.icon}
-                  </div>
-                  <p className="text-sm text-muted-foreground font-body">
-                    Screenshot placeholder — Slide {slide.id}
-                  </p>
-                </div>
-              </div>
-
-              {/* Features Grid */}
-              {slide.features && (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                  {slide.features.map((feature, idx) => (
-                    <div
-                      key={idx}
-                      className="px-4 py-3 rounded-xl bg-muted/50 border border-border text-center hover:border-primary/30 hover:bg-muted transition-all duration-300"
-                    >
-                      <span className="font-body text-sm font-medium text-foreground">
-                        {feature}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {/* Stats */}
-              {slide.stats && (
-                <div className="grid grid-cols-3 gap-4">
-                  {slide.stats.map((stat, idx) => (
-                    <div
-                      key={idx}
-                      className="text-center p-4 rounded-xl bg-muted/50 border border-border"
-                    >
-                      <p className={`font-display text-2xl md:text-3xl font-bold bg-gradient-to-r ${accentColors[slide.accent || "primary"]} bg-clip-text text-transparent`}>
-                        {stat.value}
-                      </p>
-                      <p className="font-body text-sm text-muted-foreground mt-1">
-                        {stat.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+            <div className={`h-2 bg-gradient-to-r ${accentColors[slide.accent || "primary"]}`} />
+            
+            {renderCardContent()}
 
             {/* Card Footer */}
             <div className="px-6 md:px-10 lg:px-12 pb-6 md:pb-8">
